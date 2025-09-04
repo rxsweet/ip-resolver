@@ -1,12 +1,8 @@
-name = "ip-resolver"
+name = "ip"
 main = "ip-resolver.js"
 compatibility_date = "2023-08-23"
-workers_dev = false
+workers_dev = true
 preview_urls = false
-
-routes = [
-  { pattern = "resolver.exbal.my.id", custom_domain = true }
-]
 
 [unsafe.metadata.observability]
 enabled = true
