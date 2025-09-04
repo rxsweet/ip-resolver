@@ -24,9 +24,9 @@ on:
       - "v*"
     # Only trigger when IP Resolver files change
     paths:
-      - "IpResolver/ip-resolver.js"
-      - "IpResolver/wrangler-ip-resolver.toml"
-      - ".github/workflows/ip-resolver.yml"
+      - "ip.resolver1/ip-resolver.js"
+      - "ip.resolver1/wrangler-ip-resolver.toml"
+      - ".github/workflows/ip.resolver1.yml"
 
   repository_dispatch:
 
@@ -79,7 +79,7 @@ jobs:
         run: npm install -g wrangler
 
       - name: 🔍 Deploy IP Resolver Worker
-        working-directory: ./IpResolver
+        working-directory: ./ip.resolver1
         run: |
           wrangler deploy --config wrangler-ip-resolver.toml
         env:
@@ -95,7 +95,7 @@ jobs:
           
           # Test IP resolver endpoint
           echo "Testing IP resolver endpoint..."
-          response=$(curl -s "https://resolver.exbal.my.id" || echo "Custom domain test failed")
+          response=$(curl -s "https://ip.resolver1.workers.dev" || echo "Custom domain test failed")
           
           if echo "$response" | grep -q '"ip"'; then
             echo "✅ IP Resolver is working correctly"
@@ -118,4 +118,4 @@ jobs:
       - name: 🎤 Notice
         run: |
           echo "::notice::IP Resolver Worker (Exbal) deployed to ${WORKERS_ENV} / ${GIT_REF} @ ${COMMIT_SHA}"
-          echo "::notice::Available at: https://resolver.exbal.my.id"
+          echo "::notice::Available at: https://ip.resolver1.worker.dev"
