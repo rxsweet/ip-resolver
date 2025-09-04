@@ -83,8 +83,8 @@ jobs:
         run: |
           wrangler deploy --config wrangler-ip-resolver.toml
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN_RESOLVER1 }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID_RESOLVER1 }}
           WORKERS_ENV: ${{ env.WORKERS_ENV }}
           GIT_COMMIT_ID: ${{ env.GIT_REF }}
 
