@@ -1,0 +1,37 @@
+{
+  "name": "ip-resolver-worker-exbal",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker untuk IP Resolution dengan informasi lengkap (Exbal)",
+  "main": "ip-resolver.js",
+  "scripts": {
+    "dev": "wrangler dev --config wrangler-ip-resolver.toml",
+    "deploy": "wrangler deploy --config wrangler-ip-resolver.toml",
+    "deploy:prod": "wrangler deploy --config wrangler-ip-resolver.toml --env prod",
+    "deploy:one": "wrangler deploy --config wrangler-ip-resolver.toml --env one",
+    "tail": "wrangler tail --config wrangler-ip-resolver.toml",
+    "test": "curl -s https://resolver.exbal.my.id | jq .",
+    "test-local": "curl -s http://localhost:8787 | jq .",
+    "test-comprehensive": "./test.sh",
+    "deploy-and-test": "./deploy.sh && sleep 5 && ./test.sh",
+    "status": "curl -s -I https://resolver.exbal.my.id",
+    "perf": "for i in {1..10}; do echo \"Request $i:\"; time curl -s https://resolver.exbal.my.id > /dev/null; done"
+  },
+  "keywords": [
+    "cloudflare",
+    "worker",
+    "ip-resolver",
+    "api",
+    "geolocation",
+    "exbal"
+  ],
+  "author": "Exbal Team",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/Tunnel-exbal.my.id"
+  },
+  "homepage": "https://resolver.exbal.my.id"
+}
